@@ -1,0 +1,6 @@
+---
+- hosts: elk
+  become: true
+  roles:
+    - roles/add-elastic-repo
+
