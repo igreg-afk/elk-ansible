@@ -1,0 +1,6 @@
+--- 
+- hosts: elk
+  become: true
+  roles:
+    - roles/java
+#if you have the package error missing package i suggest to install it manually.
