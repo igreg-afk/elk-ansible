@@ -1,0 +1,7 @@
+---
+- hosts: elk
+  become: true
+#  vars_files: 
+#    - /opt/elk-ansible/roles/elasticsearch/defaults/main.yml
+  roles:
+    - roles/elasticsearch

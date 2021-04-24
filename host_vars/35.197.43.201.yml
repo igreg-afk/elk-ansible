@@ -1,0 +1,10 @@
+cluster_name: elk
+node_name: elk-1
+
+path_data: /var/lib/elasticsearch
+path_logs: /var/log/elasticsearch
+
+network_host: 0.0.0.0
+http_port: 9200
+
+discovery_type: single-node

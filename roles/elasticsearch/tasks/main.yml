@@ -1,0 +1,24 @@
+
+---
+# tasks file for elasticsearch
+
+- name: installing elasticsearch
+  apt:
+    name: elasticsearch
+
+#replace elasticsearch.yml file 
+- name: replacing the config file elasticsearch
+  template:
+    src: elasticsearch.j2
+    dest: /etc/elasticsearch/elasticsearch.yml
+    owner: root
+    group: root
+    mode: 0777
+#    remote_src: yes
+#starting elasticsearch service
+- name: starting elasticsearch service
+  service:
+    name: elasticsearch
+    state: started
+    enabled: yes
+
