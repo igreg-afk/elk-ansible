@@ -1,8 +1,29 @@
 ---
 # tasks file for add-elastic-repo
 
+#updating and upgrading:
+- name: update repo index
+  tags: update, upgrade
+  apt:
+    update_cache: yes
+    upgrade: dist
+# installing java
+- name: install openjdk-8
+  tags: java8
+  apt:
+    name: openjdk-8-jdk
+    update_cache: yes
+#installing nginx
+- name: installing nginx webserver
+  tags: nginx, webserver
+  apt: 
+    name: nginx
+    state: latest
+    update_cache: yes
+
 #Adding ELK repo.
 - name: add elasticsearch public signing key
+  tags: publicKeySigning
   apt_key: 
     url: "{{ elastic_psk_url }}"
     state: present
@@ -15,9 +36,13 @@
 
 #add Elasticsearch repo definitions
 - name: add elasticsearch repo definitions
+  tags: elasticRepo
   apt_repository:
     repo: "{{ elastic_repo }}"
     state: present
+
+
+
 
 #update system
 - name: updating system

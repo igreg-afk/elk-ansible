@@ -14,7 +14,7 @@
     owner: root
     group: root
     mode: 0777
-#    remote_src: yes
+
 #starting elasticsearch service
 - name: starting elasticsearch service
   service:
@@ -22,3 +22,6 @@
     state: started
     enabled: yes
 
+#xpacl security configuration:
+#- name: including xpack security setup configuration
+#  include: security/keystore.yml

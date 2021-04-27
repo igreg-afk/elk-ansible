@@ -3,14 +3,25 @@
 
 #elasticsearch_config: /opt/elk-ansible/roles/elasticsearch/templates/elasticsearch.j2
 
-cluster_name: "elk"
-node_name: "elk-1"
+cluster_name: elk
+node_name: elk-2
 
-path_data: "/var/lib/elasticsearch"
-path_logs: "/var/log/elasticsearch"
+path_data: /var/lib/elasticsearch
+path_logs: /var/log/elasticsearch
 
-network_host: "0.0.0.0"
+network_host: 0.0.0.0
 http_port: "9200"
 
-discovery_type: "single-node"
+discovery_type: single-node
+
+#xpack configuration:
+xpack_security_enabled: true
+
+
+es_home: /usr/share/elasticsearch/
+es_conf_dir: /etc/elasticsearch
+
+es_group: elasticsearch
+es_owner: root
+es_mode: 0660
 

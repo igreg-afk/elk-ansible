@@ -1,0 +1,33 @@
+---
+# tasks file for kibana
+
+#installing kibana
+- name: installing kibana with apt
+  apt:
+    name: kibana
+    update_cache: yes
+
+
+#this task is used for backing up the kibana.yml config file
+#- name: copying the kibana config file
+#  copy:
+#    remote_src: yes
+#    src: /etc/kibana/kibana.yml
+#    dest: /etc/kibana/kibana2.yml
+ 
+
+# replacing the kibana.yml with template we have
+- name: replacing kibana config file
+  template:
+    src: kibana.yml
+    dest: /etc/kibana/kibana.yml
+    owner: root
+    group: kibana
+    mode: 0660
+
+#staring the service:
+- name: starting the kibana service
+  service:
+    name: kibana
+    state: started
+    enabled: yes
